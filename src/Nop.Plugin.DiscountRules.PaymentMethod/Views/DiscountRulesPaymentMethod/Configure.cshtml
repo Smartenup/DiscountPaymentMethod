@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "";
+}
+@model Nop.Plugin.DiscountRules.PaymentMethod.Models.RequirementModel
+@using Nop.Web.Framework;
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#savebypaymentMethodrequirement@(Model.RequirementId)').click(function () {
+                var paymentMethodSystemName = $("#@Html.FieldIdFor(model => model.PaymentMethodSystemName)").val();
+                var discountId = @Model.DiscountId
+                var requirementId = @Model.RequirementId
+                $.ajax({
+                    cache:false,
+                    type: "POST",
+                    url: "@(Url.Action("Configure", "DiscountRulesPaymentMethod"))",
+                    data: { "discountId": discountId, "discountRequirementId": requirementId, "paymentMethodSystemName": paymentMethodSystemName },
+                    success: function (data) {
+                         $('#pnl-save-requirement-result@(Model.RequirementId)').fadeIn("slow").delay(1000).fadeOut("slow");
+                         //notify parent if it's a new requirement
+                         @if (Model.RequirementId == 0)
+                         {
+                            <text>$("#discountRequirementContainer").trigger('nopnewdiscountruleadded', [data.NewRequirementId]);</text>
+                         }
+                    },
+                    error:function (xhr, ajaxOptions, thrownError){
+                        alert('@Html.Raw(HttpUtility.JavaScriptStringEncode(T("Admin.Promotions.Discounts.Requirements.FailedToSave").Text))');
+                    }  
+                });
+            });
+        });
+    </script>
+    
+    <table class="adminContent">
+        <tr>
+            <td class="adminTitle">
+                @Html.NopLabelFor(model => model.PaymentMethodSystemName):
+            </td>
+            <td class="adminData">
+                <div>@Html.DropDownListFor(model => model.PaymentMethodSystemName, Model.AvailablePaymentMethodSystemNames) <input type="button" id="savebypaymentMethodrequirement@(Model.RequirementId)" class="t-button" value="@T("Admin.Common.Save")" /></div>
+                <div id="pnl-save-requirement-result@(Model.PaymentMethodSystemName)" style="display:none;">@T("Admin.Promotions.Discounts.Requirements.Saved")</div>
+            </td>
+        </tr>
+    </table>
