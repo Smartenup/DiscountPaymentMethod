@@ -44,11 +44,7 @@ namespace Nop.Plugin.DiscountRules.PaymentMethod
 
             if (string.IsNullOrWhiteSpace(paymentMethodSystemName))
                 return result;
-
-
-            if (request.Customer == null || request.Customer.IsGuest())
-                return result;
-
+            
             var customerSelectedPaymentMethodSystemName = request.Customer.GetAttribute<string>(SystemCustomerAttributeNames.SelectedPaymentMethod, request.Store.Id);
 
             if (string.IsNullOrWhiteSpace(customerSelectedPaymentMethodSystemName))

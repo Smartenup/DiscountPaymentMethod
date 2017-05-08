@@ -24,3 +24,21 @@ C:\Users\1055T\ImperioDaDanca\nopCommerce_3.70_Source\Presentation\Nop.Web\Plugi
 C:\Users\1055T\ImperioDaDanca\nopCommerce_3.70_Source\Plugins\Nop.Plugin.DiscountRules.PaymentMethod\obj\Debug\Nop.Plugin.DiscountRules.PaymentMethod.csprojResolveAssemblyReference.cache
 C:\Users\1055T\ImperioDaDanca\nopCommerce_3.70_Source\Plugins\Nop.Plugin.DiscountRules.PaymentMethod\obj\Debug\Nop.Plugin.DiscountRules.PaymentMethod.dll
 C:\Users\1055T\ImperioDaDanca\nopCommerce_3.70_Source\Plugins\Nop.Plugin.DiscountRules.PaymentMethod\obj\Debug\Nop.Plugin.DiscountRules.PaymentMethod.pdb
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\DiscountPaymentMethod\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\Views\DiscountRulesPaymentMethod\Configure.cshtml
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\DiscountPaymentMethod\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\web.config
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\DiscountPaymentMethod\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\Description.txt
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\DiscountPaymentMethod\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\Nop.Plugin.DiscountRules.PaymentMethod.dll
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\DiscountPaymentMethod\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\Nop.Plugin.DiscountRules.PaymentMethod.pdb
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\nopCommerce_3.8_Source_20161128\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\Views\DiscountRulesPaymentMethod\Configure.cshtml
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\nopCommerce_3.8_Source_20161128\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\web.config
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\nopCommerce_3.8_Source_20161128\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\Description.txt
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\nopCommerce_3.8_Source_20161128\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\Nop.Plugin.DiscountRules.PaymentMethod.dll
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\nopCommerce_3.8_Source_20161128\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\Nop.Plugin.DiscountRules.PaymentMethod.pdb
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\DiscountPaymentMethod\src\Nop.Plugin.DiscountRules.PaymentMethod\obj\Debug\Nop.Plugin.DiscountRules.PaymentMethod.csprojResolveAssemblyReference.cache
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\DiscountPaymentMethod\src\Nop.Plugin.DiscountRules.PaymentMethod\obj\Debug\Nop.Plugin.DiscountRules.PaymentMethod.dll
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\DiscountPaymentMethod\src\Nop.Plugin.DiscountRules.PaymentMethod\obj\Debug\Nop.Plugin.DiscountRules.PaymentMethod.pdb
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\nop_3.8_20161128\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\Views\DiscountRulesPaymentMethod\Configure.cshtml
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\nop_3.8_20161128\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\web.config
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\nop_3.8_20161128\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\Description.txt
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\nop_3.8_20161128\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\Nop.Plugin.DiscountRules.PaymentMethod.dll
+C:\Users\uiska\Documents\Visual Studio 2015\Projects\nop_3.8_20161128\Presentation\Nop.Web\Plugins\DiscountRules.PaymentMethod\Nop.Plugin.DiscountRules.PaymentMethod.pdb
