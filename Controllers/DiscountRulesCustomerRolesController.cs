@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Discounts;
-using Nop.Core.Domain.Stores;
 using Nop.Plugin.DiscountRules.PaymentMethod.Models;
 using Nop.Services.Configuration;
 using Nop.Services.Customers;
@@ -31,44 +29,26 @@ namespace Nop.Plugin.DiscountRules.PaymentMethod.Controllers
         private readonly IDiscountService _discountService;
         private readonly IPermissionService _permissionService;
         private readonly ILocalizationService _localizationService;
-        private int restrictedRoleId;
-		private readonly IPaymentService _paymentService;
         private readonly IPaymentPluginManager _paymentPluginManager;
 
 		public DiscountRulesPaymentMethodController(IDiscountService discountService,
             ISettingService settingService,
             IPermissionService permissionService,
             ICustomerService customerService,
-            ILocalizationService localizationService, IPaymentService paymentService, IPaymentPluginManager paymentPluginManager)
+            ILocalizationService localizationService, 
+            IPaymentPluginManager paymentPluginManager)
 
         {
             
-            this._customerService = customerService;
-            this._localizationService = localizationService;
-            this._discountService = discountService;
-            this._settingService = settingService;
-            this._permissionService = permissionService;
-			this._paymentService = paymentService;
-            this._paymentPluginManager = paymentPluginManager;
+            _customerService = customerService;
+            _localizationService = localizationService;
+            _discountService = discountService;
+            _settingService = settingService;
+            _permissionService = permissionService;
+			_paymentPluginManager = paymentPluginManager;
 		}
 
         
-        #region Utilities
-
-        /// <summary>
-        /// Get errors message from model state
-        /// </summary>
-        /// <param name="modelState">Model state</param>
-        /// <returns>Errors message</returns>
-        /// 
-
-        //comentado 28/11 V
-        //protected IEnumerable<string> GetErrorsFromModelState(ModelStateDictionary modelState)
-        //{
-        //    return ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage));
-        //}
-
-        #endregion
         public async Task<IActionResult> Configure(int discountId, int? discountRequirementId)
         {
             if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManageDiscounts))
@@ -113,61 +93,8 @@ namespace Nop.Plugin.DiscountRules.PaymentMethod.Controllers
 
             return View("~/Plugins/DiscountRules.PaymentMethod/Views/Configure.cshtml", model);
 
-            //set available customer roles
-            //    //novo V
-            //    model.AvailableCustomerRoles = (await _customerService.GetAllCustomerRolesAsync(true)).Select(role => new SelectListItem
-            //    {
-            //        Text = role.Name,
-            //        Value = role.Id.ToString(),
-            //        Selected = role.Id == restrictedRoleId
-            //    }).ToList();
-            //    model.AvailableCustomerRoles.Insert(0, new SelectListItem
-            //    {
-            //        Text = await _localizationService.GetResourceAsync("Plugins.DiscountRules.CustomerRoles.Fields.CustomerRole.Select"),
-            //        Value = "0"
-            //    });
-
-            //    //add a prefix
-            //    ViewData.TemplateInfo.HtmlFieldPrefix = string.Format("DiscountRulesHasSpentAmount{0}", discountRequirementId.HasValue ? discountRequirementId.Value.ToString() : "0");
-
-            //    return View("~/Plugins/DiscountRules.HasSpentAmount/Views/Configure.cshtml", model);
+          
         }
-
-
-        // comentado 30/11
-            //[HttpPost]
-            //public async Task<IActionResult> Configure(int discountId, int? discountRequirementId, decimal spentAmount)
-            //{
-            //    if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManageDiscounts))
-            //        return Content("Access denied");
-
-            //    var discount = _discountService.GetDiscountByIdAsync(discountId);
-            //    if (discount == null)
-            //        throw new ArgumentException("Discount could not be loaded");
-
-            //    DiscountRequirement discountRequirement = null;
-            //    if (discountRequirementId.HasValue)
-            //        discountRequirement = discount.DiscountRequirements.FirstOrDefault(dr => dr.Id == discountRequirementId.Value);
-
-            //    if (discountRequirement != null)
-            //    {
-            //        //update existing rule
-            //        _settingService.SetSetting(string.Format("DiscountRequirement.HasSpentAmount-{0}", discountRequirement.Id), spentAmount);
-            //    }
-            //    else
-            //    {
-            //        //save new rule
-            //        discountRequirement = new DiscountRequirement
-            //        {
-            //            DiscountRequirementRuleSystemName = "DiscountRequirement.HasSpentAmount"
-            //        };
-            //        discount.DiscountRequirements.Add(discountRequirement);
-            //        _discountService.UpdateDiscountAsync(discount);
-
-            //        _settingService.SetSetting(string.Format("DiscountRequirement.HasSpentAmount-{0}", discountRequirement.Id), spentAmount);
-            //    }
-            //    return Json(new { Result = true, NewRequirementId = discountRequirement.Id }, JsonRequestBehavior.AllowGet);
-            //}
 
         [HttpPost]
         public async Task<IActionResult> Configure(RequirementModel model)

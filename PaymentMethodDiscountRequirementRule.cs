@@ -2,20 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Nop.Core;
-using Nop.Core.Domain.Orders;
-using Nop.Services.Catalog;
+using Nop.Core.Domain.Customers;
+using Nop.Services.Common;
 using Nop.Services.Configuration;
 using Nop.Services.Discounts;
 using Nop.Services.Localization;
-using Nop.Services.Orders;
 using Nop.Services.Plugins;
-using Microsoft.AspNetCore.Mvc;
-using Nop.Core.Domain.Customers;
-using Nop.Services.Tax;
-using Nop.Services.Common;
 
 namespace Nop.Plugin.DiscountRules.PaymentMethod
 
@@ -25,10 +21,6 @@ namespace Nop.Plugin.DiscountRules.PaymentMethod
     {
         private readonly ILocalizationService _localizationService;
         private readonly ISettingService _settingService;
-        private readonly IOrderService _orderService;
-        private readonly IPriceCalculationService _priceCalculationService;
-        private readonly IShoppingCartService _shoppingCartService;
-        private readonly IProductService _productServise;
         protected readonly IDiscountService _discountService;
         private readonly IUrlHelperFactory _urlHelperFactory;
         private readonly IWebHelper _webHelper;
@@ -36,17 +28,15 @@ namespace Nop.Plugin.DiscountRules.PaymentMethod
 		private readonly IGenericAttributeService _genericAttributeService;
 
 		public PaymentMethodDiscountRequirementRule(ISettingService settingService,
-            IOrderService orderService, IPriceCalculationService priceCalculationService,
-            ILocalizationService localizationService, IShoppingCartService shoppingCartService, IProductService productServise,
-            IDiscountService discountService, IUrlHelperFactory urlHelperFactory,
-            IWebHelper webHelper, IActionContextAccessor actionContextAccessor, IGenericAttributeService genericAttributeService)
+            ILocalizationService localizationService,
+            IDiscountService discountService,
+            IUrlHelperFactory urlHelperFactory,
+            IWebHelper webHelper,
+            IActionContextAccessor actionContextAccessor,
+            IGenericAttributeService genericAttributeService)
         {
             _localizationService = localizationService;
             _settingService = settingService;
-            _orderService = orderService;
-            _priceCalculationService = priceCalculationService;
-            _shoppingCartService = shoppingCartService;
-            _productServise = productServise;
             _discountService = discountService;
             _actionContextAccessor = actionContextAccessor;
             _urlHelperFactory = urlHelperFactory;
@@ -105,11 +95,7 @@ namespace Nop.Plugin.DiscountRules.PaymentMethod
             return urlHelper.Action("Configure", "DiscountRulesPaymentMethod",
                 new { discountId = discountId, discountRequirementId = discountRequirementId }, _webHelper.GetCurrentRequestProtocol());
 
-            ////configured in RouteProvider.cs
-            //string result = "Plugins/DiscountRulesHasSpentAmount/Configure/?discountId=" + discountId;
-            //if (discountRequirementId.HasValue)
-            //    result += string.Format("&discountRequirementId={0}", discountRequirementId.Value);
-            //return result;
+            
         }
 
             public override async Task InstallAsync()
@@ -117,10 +103,6 @@ namespace Nop.Plugin.DiscountRules.PaymentMethod
             
             await _localizationService.AddOrUpdateLocaleResourceAsync(new Dictionary<string, string>
             {
-				//["Plugins.DiscountRules.HasSpentAmount.Fields.Amount"] = "Required spent amount",
-				//["Plugins.DiscountRules.HasSpentAmount.Fields.Amount.Hint"] = "Discount will be applied if customer has spent/purchased x.xx amount.",
-				//["Plugins.DiscountRules.HasSpentAmount.NotEnough"] = "Sorry, this offer requires more money spent"
-
 				["Plugins.DiscountRules.PaymentMethod.Fields.SelectPaymentMethod"] = "Select Payment Method",
 				["Plugins.DiscountRules.PaymentMethod.Fields.Method"] = "Payment Method to be discounted",
 				["Plugins.DiscountRules.PaymentMethod.Fields.Method.Hint"] = "Discount will be applied if customer selected this payment method.",
