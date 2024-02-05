@@ -1,0 +1,11 @@
+﻿{
+    "Group": "Discount requirements",
+    "FriendlyName": "Customer PaymentMethod",
+    "SystemName": "DiscountRequirement.PaymentMethod",
+    "Version": "2.0",
+    "SupportedVersions": [ "4.60" ],
+    "Author": "Smartenup team",
+    "DisplayOrder": 1,
+    "FileName": "Nop.Plugin.DiscountRules.PaymentMethod.dll",
+    "Description": "Customer PaymentMethod"
+}

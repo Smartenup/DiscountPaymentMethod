@@ -1,8 +1,0 @@
-﻿Group: Discount requirements
-FriendlyName: Restricted to Payment Method
-SystemName: DiscountRequirement.PaymentMethod
-Version: 1.00
-SupportedVersions: 3.80
-Author: SmartenUP team/Pedro Usinskas
-DisplayOrder: 1
-FileName: Nop.Plugin.DiscountRules.PaymentMethod.dll	
